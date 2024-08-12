@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract EtherConverter {
+    //function to receive ether and convert it to its value
+    function receiveEther() public  payable {
+
+        //Get the amount of Ether sent
+        uint256 etherSent = msg.value;
+
+        // convert ether to wei
+        uint256 weiValue = etherSent * 1e18; //1 Ether = 10^18 wei
+
+        //convert ether to Gwei
+        uint256 gweiValue = etherSent * 1e9; //1 Eher = 10^9 Gwei
+
+        //log the values 
+        emit LogValues(etherSent, weiValue, gweiValue);
+     }
+
+         // Event to log the values
+        event LogValues(uint256 etherValue, uint256 weiValue, uint256 gweiValue);
+}
